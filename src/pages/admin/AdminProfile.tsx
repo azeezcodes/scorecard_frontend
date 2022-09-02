@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { IAdmin, IAdminWithStack } from '../../typings';
-import { getAdminData, presentAlert, updateAdminData, uploadAdminProfilePicture } from '../../utils/adminApi';
+import { getAdminData, getSuperAdminData, presentAlert, updateAdminData, uploadAdminProfilePicture } from '../../utils/adminApi';
 import './admin.css'
 import { Selectoption } from '../../components/Selectoption';
 import '../../components/component.css'
@@ -17,13 +17,33 @@ export function AdminProfile(prop: {id?: string}){
     const params =  useParams();
         
     useEffect(()=> {
+              const role = localStorage.getItem("role");
         let adminiD = params.id;
         //alert(adminiD + " the id")
-        getAdminData(adminiD as string).then((res: any) => { 
-            //alert(JSON.stringify(res))
-            setAdminData({...res.data, ...{"stack": res.data.stack[0]} })
-            //alert(JSON.stringify(adminData) + " admin")
-        }).catch((err) => { alert(JSON.stringify(err) + " error")})
+        if (role === "superadmin") {
+        
+        getAdminData(adminiD as string)
+           .then((res: any) => {
+              //alert(JSON.stringify(res))
+              setAdminData({ ...res.data, ...{ stack: res.data.stack[0] } });
+              //alert(JSON.stringify(adminData) + " admin")
+           })
+           .catch((err) => {
+              alert(JSON.stringify(err) + " error");
+           });    
+        } else {
+            
+        getSuperAdminData()
+           .then((res: any) => {
+              //alert(JSON.stringify(res))
+              setAdminData({ ...res.data, ...{ stack: res.data.stack[0] } });
+              //alert(JSON.stringify(adminData) + " admin")
+           })
+           .catch((err) => {
+              alert(JSON.stringify(err) + " error");
+           });
+        }
+        
     }, [outputMessage])
     
     

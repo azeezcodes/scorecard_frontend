@@ -97,24 +97,50 @@ export function deleteAdminData(adminId: string): Promise< ResponseDataType<bool
   })
 }
 
-export function getAdminData(adminId: string): Promise< ResponseDataType<IAdmin, string>> {
+export function getAdminData(
+   adminId: string
+): Promise<ResponseDataType<IAdmin, string>> {
    //alert(`${url}/admin/me/:${adminId.replace(":", "")}`);
-  return fetch(`${url}/admin/profile/${adminId}`, {
-    method: "GET",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-       Authorization: `Bearer ${token}`,
-    },
-    
-  })
-  .then((res: any) => {
-     return res.json().then((data: ResponseDataType<IAdmin, string>) => { console.log(JSON.stringify(data) + " got not"); return data})
-    })
-  .catch((err) => {
-    console.log(JSON.stringify(err) + " ERROR ")
-    let result: ResponseDataType<boolean, string>
-  })
+   return fetch(`${url}/admin/profile/${adminId}`, {
+      method: "GET",
+      headers: {
+         Accept: "application/json",
+         "Content-Type": "application/json",
+         Authorization: `Bearer ${token}`,
+      },
+   })
+      .then((res: any) => {
+         return res.json().then((data: ResponseDataType<IAdmin, string>) => {
+            console.log(JSON.stringify(data) + " got not");
+            return data;
+         });
+      })
+      .catch((err) => {
+         console.log(JSON.stringify(err) + " ERROR ");
+         let result: ResponseDataType<boolean, string>;
+      });
+}
+
+export function getSuperAdminData(): Promise<ResponseDataType<IAdmin, string>> {
+   //alert(`${url}/admin/me/:${adminId.replace(":", "")}`);
+   return fetch(`${url}/superadmin/profile`, {
+      method: "GET",
+      headers: {
+         Accept: "application/json",
+         "Content-Type": "application/json",
+         Authorization: `Bearer ${token}`,
+      },
+   })
+      .then((res: any) => {
+         return res.json().then((data: ResponseDataType<IAdmin, string>) => {
+            console.log(JSON.stringify(data) + " got not");
+            return data;
+         });
+      })
+      .catch((err) => {
+         console.log(JSON.stringify(err) + " ERROR ");
+         let result: ResponseDataType<boolean, string>;
+      });
 }
 
 

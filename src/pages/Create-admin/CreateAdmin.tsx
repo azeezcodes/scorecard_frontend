@@ -38,6 +38,7 @@ const CreateAdmin = () => {
       stack,
       role
     );
+    console.log(res)
     if (res.message && res.message.match(/successfully/gi)) {
       setTimeout(() => {
         Swal.fire({
