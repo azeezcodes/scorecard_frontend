@@ -10,7 +10,7 @@ import DecadevManagement from "./pages/User_management/User-management";
 import { CreateUser } from "./pages/Create_user/Create_user";
 import { AdminDashboard } from "./pages/Admin-dashboard/Admindashboard";
 import CreateAdmin from "./pages/Create-admin/CreateAdmin";
-import { AdminProfile } from "./pages/Admin/AdminProfile";
+// import { AdminProfile } from "./pages/Admin/AdminProfile";
 import AdminManagement from "./pages/Admin/Admin-management";
 import UserDashboard from "./pages/User-dashboard/User-dashboard";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
@@ -36,7 +36,7 @@ function App() {
       <Route path="/createadmin" element={<CreateAdmin />} />
       <Route path="/adminmanagement" element={<AdminManagement />} />
       
-      <Route path="/adminprofile/:id" element={<AdminProfile />} />
+      {/* <Route path="/adminprofile/:id" element={<AdminProfile />} /> */}
 
       <Route path="/userdashboard" element={<UserDashboard />} />
       <Route path="/scorecard/:id" element={<UserScorecard />} />
