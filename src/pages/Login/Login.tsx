@@ -38,6 +38,7 @@ function Login() {
       });
       return;
     } else {
+      console.log(result)
       localStorage.setItem("token", result.token);
       localStorage.setItem("Id", result.user._id);
       localStorage.setItem("User", result.user.firstname);

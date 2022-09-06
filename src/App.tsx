@@ -36,7 +36,7 @@ function App() {
       <Route path="/createadmin" element={<CreateAdmin />} />
       <Route path="/adminmanagement" element={<AdminManagement />} />
       
-      <Route path="/adminprofile/:id" element={<AdminProfile id="" />} />
+      <Route path="/adminprofile/:id" element={<AdminProfile />} />
 
       <Route path="/userdashboard" element={<UserDashboard />} />
       <Route path="/scorecard/:id" element={<UserScorecard />} />
